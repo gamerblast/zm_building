@@ -1,0 +1,4 @@
+return 1000
+^3WARNING: "zmcore_bgb_machine" is not a valid zbarrier
+  zbarrier:zmcore_bgb_machine
+    col_map:maps/zm/zm_building.d3dbsp

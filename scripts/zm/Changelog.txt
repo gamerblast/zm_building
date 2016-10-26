@@ -1,0 +1,16 @@
+Stock Scripts
+	zm_building:
+		-increased starting points (should be reversed for release build)
+		-turned off dog rounds (may need to be re-enabled for shadow people)
+		-turned off quick revive at start
+		-changed player health to 2 hits (change this under no circumstance)
+
+Custom Scripts	
+	zm_bloodgenerator:
+		-PURPOSE: provides blood pump functionalities
+		-TODO: add exception for picking up death machine mid-ritual (need stock script access)
+		-TODO: add exception for buying wall guns (probably need stock script access)
+		-TODO: add ui elements
+		-TODO: tweak cost and reward
+		-TODO: fully adapt generators to what they correspond to in map
+	
