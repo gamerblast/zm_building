@@ -13,4 +13,10 @@ Custom Scripts
 		-TODO: add ui elements
 		-TODO: tweak cost and reward
 		-TODO: fully adapt generators to what they correspond to in map
+	zm_perk_upgrades:
+		-PURPOSE: provides utility functions regarding the upgraded perks
+		TODO: Add other perks besides OG 4
+		TODO: Maybe add perk effects/upgrade methods, but these might be better done in another script
+
+
 	
