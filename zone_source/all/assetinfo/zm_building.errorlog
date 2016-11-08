@@ -1,4 +1,10 @@
-return 1000
+return 2001000
+^1ERROR: xmodel 'p6_zm_vending_electric_cherry_off' is missing
+  xmodel:p6_zm_vending_electric_cherry_off
+    csv:zone_source/zm_building.zone
+^1ERROR: xmodel 'p6_zm_vending_electric_cherry_on' is missing
+  xmodel:p6_zm_vending_electric_cherry_on
+    csv:zone_source/zm_building.zone
 ^3WARNING: "zmcore_bgb_machine" is not a valid zbarrier
   zbarrier:zmcore_bgb_machine
     col_map:maps/zm/zm_building.d3dbsp

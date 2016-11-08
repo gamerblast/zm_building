@@ -14,5 +14,10 @@ sound,zm_building
 scriptparsetree,scripts/zm/zm_building.gsc
 scriptparsetree,scripts/zm/zm_building.csc
 scriptparsetree,scripts/zm/zm_bloodgenerator.gsc
+
+xmodel,p6_zm_vending_electric_cherry_off
+xmodel,p6_zm_vending_electric_cherry_on
+scriptparsetree,scripts/zm/_zm_perk_electric_cherry.gsc
+scriptparsetree,scripts/zm/_zm_perk_electric_cherry.csc
 	
 	

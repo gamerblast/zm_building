@@ -3,7 +3,10 @@ Stock Scripts
 		-increased starting points (should be reversed for release build)
 		-turned off dog rounds (may need to be re-enabled for shadow people)
 		-turned off quick revive at start
-		-changed player health to 2 hits (change this under no circumstance)
+		-changed player health to 2 hits
+		-including EC script
+	_zm_perk_electric_cherry:
+		Modified stock cherry script to work (credits to Modme wiki)		
 
 Custom Scripts	
 	zm_bloodgenerator:
