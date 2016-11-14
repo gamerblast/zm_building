@@ -18,8 +18,9 @@ Custom Scripts
 		-TODO: fully adapt generators to what they correspond to in map
 	zm_perk_upgrades:
 		-PURPOSE: provides utility functions regarding the upgraded perks
-		TODO: Add other perks besides OG 4
-		TODO: Maybe add perk effects/upgrade methods, but these might be better done in another script
+		-PURPOSE: provides upgrade methods/quests
+		TODO: Add other perks besides OG 3 + Cherry, add Jug + DT + Quick + other upgrade quests
+		TODO: Maybe add perk effects, but these might be better done in another script
 
 
 	

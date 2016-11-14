@@ -53,9 +53,10 @@
 
 #using scripts\zm\zm_usermap;
 
-#using scripts\zm\zm_bloodgenerator;
-
 //Custom Scripts
+
+#using scripts\zm\zm_bloodgenerator;
+#using scripts\zm\zm_perk_upgrades;
 
 //*****************************************************************************
 // MAIN
@@ -72,6 +73,7 @@ function main()
 	zombie_utility::set_zombie_var( "player_base_health", 				66 );	 // sets player health to 2 hits
 
 	thread zm_bloodgenerator::main();
+	thread zm_perk_upgrades::main();
 	
 	level._zombie_custom_add_weapons =&custom_add_weapons;
 	

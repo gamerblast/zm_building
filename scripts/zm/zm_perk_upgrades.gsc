@@ -36,6 +36,7 @@
 #using scripts\zm\_zm_perk_quick_revive;
 #using scripts\zm\_zm_perk_sleight_of_hand;
 #using scripts\zm\_zm_perk_staminup;
+#using scripts\zm\_zm_perk_electric_cherry;
 
 //Powerups
 #using scripts\zm\_zm_powerup_double_points;
@@ -68,49 +69,121 @@ function init(){
 function on_player_connect()
 {
 	self.hasJug2 = false;
-	self.hasSpeed2 = false;
+	self.hasElectric2 = false;
 	self.hasQuick2 = false;
 	self.hasDouble2 = false;
+
+	self.isUpgradingJug = false;
+	self.isUpgradingCherry = false;
+	self.isUpgradingQuick = false;
+	self.isUpgradingDouble = false;
+
+	self.cherry_kills = 0;
+
+	self thread electric_cherry_upgrade();
 }
 
 function givePerkUpgrade(perkname)
 {
 	switch(perkname) {
-		case PERK_JUGGERNOG:
+		case "specialty_armorvest":
 			self.hasJug2 = true;
 			break;
-		case PERK_SLEIGHT_OF_HAND:
-			self.hasSpeed2 = true;
+		case"specialty_electriccherry":
+			self.hasElectric2 = true;
 			break;
-		case PERK_QUICK_REVIVE:
+		case "specialty_revive":
 			self.hasQuick2 = true;
 			break;
-		case PERK_DOUBLETAP2:
+		case "specialty_rof":
 			self.hasDouble2 = true;
 			break;
 	}
 }
 
 function IsPerkUpgradeActive(perkname) {
-	if(! hasPerk(perkname)) 
+	if(! self HasPerk(perkname)) 
 	{
 		return false;
 	}
 
 	switch(perkname) {
-		case PERK_JUGGERNOG:
+		case "specialty_armorvest":
 			return self.hasJug2;
 			break;
-		case PERK_SLEIGHT_OF_HAND:
-			return self.hasSpeed2;
+		case "specialty_electriccherry":
+			return self.hasElectric2;
 			break;
-		case PERK_QUICK_REVIVE:
+		case "specialty_revive":
 			return self.hasQuick2;
 			break;
-		case PERK_DOUBLETAP2:
+		case "specialty_rof":
 			return self.hasDouble2;
 			break;
 	}
 
 	return false;
 }
+
+function electric_cherry_upgrade() {
+	self endon("disconnect");
+	while(! self.hasElectric2) 
+	{
+		IPrintLn("Looping");
+		if(self HasPerk("specialty_electriccherry") && ! self.isUpgradingCherry)
+		{
+			//IPrintLn("got cherry");
+			self.isUpgradingCherry = true;
+			self IPrintLnBold("Gained Challenge: Electric Cherry Upgrade (Begins next round)");
+			currentRound = level.round_number;
+			while(level.round_number <= currentRound)
+			{
+				wait(0.05);
+			}
+			if(self HasPerk("specialty_electriccherry"))
+			{
+				self IPrintLnBold("Electric Cherry Upgrade: Get 10 kills with Electric Cherry (Time limit: 2 rounds)");
+				currentRound = level.round_number;
+				current_cherry_kills = 0;
+				if(isdefined(self.cherry_kills))
+				{
+					current_cherry_kills = self.cherry_kills;
+				}
+
+				IPrintLn("current cherry kills " + self.cherry_kills);
+				while(level.round_number < currentRound + 2)
+				{
+					if(! self HasPerk("specialty_electriccherry"))
+					{
+						self.isUpgradingCherry = false;
+						IPrintLnBold("Electric Cherry Upgrade Failed!");
+						break;
+					}
+					if(self.cherry_kills >= current_cherry_kills + 10)
+					{
+						self.isUpgradingCherry = false;
+						self givePerkUpgrade("specialty_electriccherry");
+						IPrintLnBold("Electric Cherry Upgraded! (Effects: Increased reload and barrier rebuild speeds)");
+						break;
+					}
+					IPrintLn("current cherry kills " + self.cherry_kills);
+					wait(0.05);
+				}
+				if(! self.hasElectric2)
+				{
+					self.isUpgradingCherry = false;
+					IPrintLnBold("Electric Cherry Upgrade Failed!");
+				}
+
+			}
+			else 
+			{
+				self.isUpgradingCherry = false;
+				self IPrintLnBold("Electric Cherry Upgrade Failed!");
+			}
+		}
+		wait(0.05);
+	}
+}
+
+function 

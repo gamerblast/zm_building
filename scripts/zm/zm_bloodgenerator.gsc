@@ -58,7 +58,6 @@
 
 function main()
 {
-	level waittill("all_players_spawned");
 	thread init();
 
 	level.vialFilled = 0; // 0 to 5
